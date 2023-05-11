@@ -1,0 +1,27 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@bufbuild/protoc-gen-connect-web": "^0.8.6",
+    "@bufbuild/protoc-gen-es": "^1.2.0",
+    "@types/node": "^18",
+    "nuxt": "^3.4.3"
+  },
+  "dependencies": {
+    "@improbable-eng/grpc-web": "^0.15.0",
+    "@volar/language-core": "^1.6.1",
+    "@volar/source-map": "^1.6.1",
+    "@volar/typescript": "^1.6.1",
+    "@volar/vue-language-core": "^1.6.4",
+    "@volar/vue-typescript": "^1.6.4",
+    "google-protobuf": "^3.21.2",
+    "grpc-web": "^1.4.2"
+  }
+}
