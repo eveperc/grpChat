@@ -3,8 +3,8 @@ package main
 import (
 	"context"
 	"fmt"
-	"gRPChat/api/gen"
-	"gRPChat/api/gen/grpcconnect"
+	"gRPChat/pkg/grpc"
+	"gRPChat/pkg/grpc/grpcconnect"
 	"github.com/bufbuild/connect-go"
 	grpcreflect "github.com/bufbuild/connect-grpcreflect-go"
 	"golang.org/x/net/http2"
