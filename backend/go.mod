@@ -3,7 +3,10 @@ module gRPChat
 go 1.20
 
 require (
+	github.com/bufbuild/connect-go v1.7.0 // indirect
+	github.com/bufbuild/connect-grpcreflect-go v1.0.0 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
+	github.com/rs/cors v1.9.0 // indirect
 	golang.org/x/net v0.10.0 // indirect
 	golang.org/x/sys v0.8.0 // indirect
 	golang.org/x/text v0.9.0 // indirect

@@ -9,7 +9,7 @@ import (
 	errors "errors"
 	connect_go "github.com/bufbuild/connect-go"
 	http "net/http"
-	grpc "pkg/grpc"
+	grpc "gRPChat/api/gen"
 	strings "strings"
 )
 

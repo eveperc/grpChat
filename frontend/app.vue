@@ -1,25 +1,17 @@
-<script>
-import { HelloRequest } from './hello_pb';
-import GreetingService from './hello_connectweb';
+<script setup lang="ts">
+import { GreetingService } from './hello_connectweb';
+import Input from './components/Input.vue';
+import { useSharedText } from './stores/states';
+const { text} = useSharedText();
 
-// GreetingServiceを使ってサーバーと通信する
-const service = GreetingService;
-// リクエストを作成する
-const request = new HelloRequest();
-request.name = 'Vue.js';
 
-//ボタンがクリックされたらconsole.log
-export default {
-  methods: {
-    handleClick() {
-      console.log(true);
-    },
-  },
-};
+
 </script>
 
 <template>
-  <div>
-    <button @click="handleClick">Click me</button>
+  <div id="app">
+    text: {{ text }}
   </div>
+  <Input />
 </template>
+
