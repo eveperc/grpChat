@@ -2,37 +2,14 @@ package main
 
 import (
 	"context"
-	"fmt"
-	"gRPChat/pkg/grpc"
 	"gRPChat/pkg/grpc/grpcconnect"
 	"github.com/bufbuild/connect-go"
 	grpcreflect "github.com/bufbuild/connect-grpcreflect-go"
 	"golang.org/x/net/http2"
 	"golang.org/x/net/http2/h2c"
-	"log"
 	"net/http"
   "github.com/rs/cors"
 )
-
-type GreetServer struct {
-}
-
-func (s *GreetServer) Hello(ctx context.Context, req *connect.Request[grpc.HelloRequest]) (*connect.Response[grpc.HelloResponse], error) {
-	log.Println("Request headers:", req.Header())
-	if req.Msg.Name == "" {
-		//エラーにステータスコードを追加
-		return nil, connect.NewError(
-			connect.CodeInvalidArgument, fmt.Errorf("name is required"),
-		)
-	}
-	greetResp := &grpc.HelloResponse{
-		Message: "Hello, " + req.Msg.Name,
-	}
-	resp := connect.NewResponse(greetResp)
-	//ヘッダをセット
-	resp.Header().Set("Greet-Version", "v1")
-	return resp, nil
-}
 
 // リフレクション
 func newServeMuxWithReflection() *http.ServeMux {
@@ -63,10 +40,10 @@ func newInterCeptors() connect.Option {
 }
 
 func main() {
-	greetServer := &GreetServer{}
+	server := &ChatService{}
 	mux := newServeMuxWithReflection()
 	interceptor := newInterCeptors()
-	path, handler := grpcconnect.NewGreetingServiceHandler(greetServer, interceptor)
+	path, handler := grpcconnect.NewChatServiceHandler(server, interceptor)
 	mux.Handle(path, handler)
   // corsHandler := cors.Default().Handler(h2c.NewHandler(mux, &http2.Server{}))
   corsHandler := cors.New(cors.Options{
